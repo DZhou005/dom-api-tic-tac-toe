@@ -1,7 +1,44 @@
 let currentPlayerSymbol = "x"
-// const squareValues = ["" ,"", "", "", "", "","",""]
+const squareValues = ["" ,"", "", "", "", "","",""]
 let gameStatus = ""
 
+const saveGame = function () {
+  const state = {
+    currentPlayerSymbol, squareValues, gameStatus
+  }
+  localStorage.setItem("gameGrid", JSON.stringify(state))
+}
+
+const loadGame = function () {
+  const savedState = localStorage.getItem("gameGrid")
+
+  if (savedState === null) return
+  const state = JSON.parse(savedState)
+  currentPlayerSymbol = state.currentPlayerSymbol
+  squareValues = state.squareValues
+  gameStatus = state.gameStatus
+
+  for (let i = 0; i < 9; i++) {
+    if (squareValues[i] !== "") {
+      const img = document.createElement("img")
+      img.src = `https://assets.aaonline.io/Module-DOM-API/formative-project-tic-tac-toe/${squareValues[i]}.svg`
+      document.getElementById(`square-${i}`).appendChild(img)
+    }
+  }
+  if (gameStatus !== "") {
+    document.getElementById("game-status").innerHTML = `winner is: ${gameStatus}`
+    document.getElementById('new-game').disabled = false;
+    document.getElementById('give-up').disabled = true;
+  }
+  else {
+    document.getElementById("game-status").innerHTML = ""
+    document.getElementById('new-game').disabled = true;
+    document.getElementById('give-up').disabled = false;
+
+  }
+
+
+}
 
 
 function checkGameStatus(arr) {
@@ -76,8 +113,9 @@ function checkGameStatus(arr) {
 
 
 window.addEventListener("DOMContentLoaded", event => {
+  loadGame()
   // let currentPlayerSymbol = "o";
-  let squareValues = ["", "", "", "", "", "", "", "", ""];
+  // let squareValues = ["", "", "", "", "", "", "", "", ""];
   let grid = document.getElementById("tic-tac-toe-board");
   const xImg = 'https://assets.aaonline.io/Module-DOM-API/formative-project-tic-tac-toe/player-x.svg';
   const oImg = 'https://assets.aaonline.io/Module-DOM-API/formative-project-tic-tac-toe/player-o.svg';
@@ -105,9 +143,10 @@ window.addEventListener("DOMContentLoaded", event => {
         }
 
         checkGameStatus(squareValues);
-
+        saveGame()
 
       }
+
 
     }
 
