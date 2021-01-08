@@ -7,50 +7,58 @@ let gameStatus = ""
 function checkGameStatus(arr) {
   if (arr[0] === arr[1] && arr[0] === arr[2] && arr[0] !== "") {
     gameStatus = arr[0].toUpperCase();
-    console.log(gameStatus);
+    document.getElementById('game-status').innerHTML = "Winner: " + gameStatus;
+    document.getElementById('new-game').disabled = false;
     return
   }
   else if (arr[3] === arr[4] && arr[3] === arr[5] && arr[3] !== "") {
     gameStatus = arr[3].toUpperCase();
-    console.log(gameStatus);
+    document.getElementById('game-status').innerHTML = "Winner: " + gameStatus;
+    document.getElementById('new-game').disabled = false;
     return
   } else if (arr[6] === arr[7] && arr[6] === arr[8] && arr[6] !== "") {
     gameStatus = arr[6].toUpperCase();
-    console.log(gameStatus);
+    document.getElementById('game-status').innerHTML = "Winner: " + gameStatus;
+    document.getElementById('new-game').disabled = false;
     return
   } else if (arr[0] === arr[3] && arr[0] === arr[6] && arr[0] !== "") {
     gameStatus = arr[0].toUpperCase();
-    console.log(gameStatus);
+    document.getElementById('game-status').innerHTML = "Winner: " + gameStatus;
+    document.getElementById('new-game').disabled = false;
     return
   } else if (arr[1] === arr[4] && arr[1] === arr[7] && arr[1] !== "") {
     gameStatus = arr[1].toUpperCase();
-    console.log(gameStatus);
+    document.getElementById('game-status').innerHTML = "Winner: " + gameStatus;
+    document.getElementById('new-game').disabled = false;
     return
   } else if (arr[2] === arr[5] && arr[2] === arr[8] && arr[2] !== "") {
     gameStatus = arr[2].toUpperCase();
-    console.log(gameStatus);
+    document.getElementById('game-status').innerHTML = "Winner: " + gameStatus;
+    document.getElementById('new-game').disabled = false;
     return
   } else if (arr[0] === arr[4] && arr[0] === arr[8] && arr[0] !== "") {
     gameStatus = arr[0].toUpperCase();
-    console.log(gameStatus);
+    document.getElementById('game-status').innerHTML = "Winner: " + gameStatus;
+    document.getElementById('new-game').disabled = false;
     return
   } else if (arr[2] === arr[4] && arr[2] === arr[6] && arr[2] !== "") {
     gameStatus = arr[2].toUpperCase();
-    console.log(gameStatus);
+    document.getElementById('game-status').innerHTML = "Winner: " + gameStatus;
+    document.getElementById('new-game').disabled = false;
     return
   }
     else if (gameStatus === "") {
       let isGridFull = true
-      console.log("in else if")
       arr.forEach((el) => {
         if(el === "") {
-          isGridFull = false
-          console.log("A")
+          isGridFull = false;
+          
         }
       })
       if (isGridFull) {
-        gameStatus = "NONE"
-        console.log(gameStatus)
+        gameStatus = "NONE";
+        document.getElementById('game-status').innerHTML = "Winner: " + gameStatus;
+        document.getElementById('new-game').disabled = false;
       }
       }
     }
@@ -66,6 +74,7 @@ window.addEventListener("DOMContentLoaded", event => {
   const oImg = 'https://assets.aaonline.io/Module-DOM-API/formative-project-tic-tac-toe/player-o.svg';
 
   grid.addEventListener("click", (event) => {
+    if (gameStatus !== "") return;
     const clickItem = event.target.id;
     if (clickItem.includes("square-")) {
       const boardNumber = Number.parseInt(clickItem[clickItem.length - 1]);
@@ -86,7 +95,7 @@ window.addEventListener("DOMContentLoaded", event => {
           currentPlayerSymbol = "x"
         }
 
-        checkGameStatus(squareValues)
+        checkGameStatus(squareValues);
 
 
       }
