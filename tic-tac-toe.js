@@ -1,7 +1,8 @@
 let currentPlayerSymbol = "x"
 // const squareValues = ["" ,"", "", "", "", "","",""]
 let gameStatus = ""
-const notEmpty = (current) => current !== '';
+
+
 
 function checkGameStatus(arr) {
   if (arr[0] === arr[1] && arr[0] === arr[2] && arr[0] !== "") {
@@ -38,13 +39,22 @@ function checkGameStatus(arr) {
     console.log(gameStatus);
     return
   }
-  else  if (arr.every(notEmpty)) {
-    console.log('not finished');
+    else if (gameStatus === "") {
+      let isGridFull = true
+      console.log("in else if")
+      arr.forEach((el) => {
+        if(el === "") {
+          isGridFull = false
+          console.log("A")
+        }
+      })
+      if (isGridFull) {
+        gameStatus = "NONE"
+        console.log(gameStatus)
+      }
+      }
+    }
 
-  }
-  
-  
-  }
 
 
 
@@ -77,12 +87,9 @@ window.addEventListener("DOMContentLoaded", event => {
         }
 
         checkGameStatus(squareValues)
-        
+
 
       }
-
-
-
 
     }
 
@@ -90,12 +97,5 @@ window.addEventListener("DOMContentLoaded", event => {
 
   // const square = document.getElementById('square-0');
   // console.log(Number.parseInt(square.id[square.id.length-1]));
-
-
-
-
-
-
-
 
 })
