@@ -1,36 +1,53 @@
 let currentPlayerSymbol = "x"
 // const squareValues = ["" ,"", "", "", "", "","",""]
-const gameStatus = ""
+let gameStatus = ""
+const notEmpty = (current) => current !== '';
 
 function checkGameStatus(arr) {
   if (arr[0] === arr[1] && arr[0] === arr[2] && arr[0] !== "") {
-    console.log("yay you won!")
+    gameStatus = arr[0].toUpperCase();
+    console.log(gameStatus);
     return
   }
   else if (arr[3] === arr[4] && arr[3] === arr[5] && arr[3] !== "") {
-    console.log("yay you won!")
+    gameStatus = arr[3].toUpperCase();
+    console.log(gameStatus);
     return
   } else if (arr[6] === arr[7] && arr[6] === arr[8] && arr[6] !== "") {
-    console.log("yay you won!")
+    gameStatus = arr[6].toUpperCase();
+    console.log(gameStatus);
     return
   } else if (arr[0] === arr[3] && arr[0] === arr[6] && arr[0] !== "") {
-    console.log("yay you won!")
+    gameStatus = arr[0].toUpperCase();
+    console.log(gameStatus);
     return
   } else if (arr[1] === arr[4] && arr[1] === arr[7] && arr[1] !== "") {
-    console.log("yay you won!")
+    gameStatus = arr[1].toUpperCase();
+    console.log(gameStatus);
     return
   } else if (arr[2] === arr[5] && arr[2] === arr[8] && arr[2] !== "") {
-    console.log("yay you won!")
+    gameStatus = arr[2].toUpperCase();
+    console.log(gameStatus);
     return
   } else if (arr[0] === arr[4] && arr[0] === arr[8] && arr[0] !== "") {
-    console.log("yay you won!")
+    gameStatus = arr[0].toUpperCase();
+    console.log(gameStatus);
     return
   } else if (arr[2] === arr[4] && arr[2] === arr[6] && arr[2] !== "") {
-    console.log("yay you won!")
+    gameStatus = arr[2].toUpperCase();
+    console.log(gameStatus);
     return
   }
+  else  if (arr.every(notEmpty)) {
+    console.log('not finished');
 
-}
+  }
+  
+  
+  }
+
+
+
 window.addEventListener("DOMContentLoaded", event => {
   // let currentPlayerSymbol = "o";
   const squareValues = ["", "", "", "", "", "", "", "", ""];
