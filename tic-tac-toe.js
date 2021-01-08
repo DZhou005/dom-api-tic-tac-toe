@@ -52,7 +52,7 @@ function checkGameStatus(arr) {
       arr.forEach((el) => {
         if(el === "") {
           isGridFull = false;
-          
+
         }
       })
       if (isGridFull) {
@@ -68,8 +68,8 @@ function checkGameStatus(arr) {
 
 window.addEventListener("DOMContentLoaded", event => {
   // let currentPlayerSymbol = "o";
-  const squareValues = ["", "", "", "", "", "", "", "", ""];
-  const grid = document.getElementById("tic-tac-toe-board");
+  let squareValues = ["", "", "", "", "", "", "", "", ""];
+  let grid = document.getElementById("tic-tac-toe-board");
   const xImg = 'https://assets.aaonline.io/Module-DOM-API/formative-project-tic-tac-toe/player-x.svg';
   const oImg = 'https://assets.aaonline.io/Module-DOM-API/formative-project-tic-tac-toe/player-o.svg';
 
@@ -104,7 +104,20 @@ window.addEventListener("DOMContentLoaded", event => {
 
   })
 
-  // const square = document.getElementById('square-0');
-  // console.log(Number.parseInt(square.id[square.id.length-1]));
+  const newGameButton = document.getElementById("new-game")
+  newGameButton.addEventListener("click", (event) => {
+    currentPlayerSymbol = 'x';
+    squareValues = ['', '', '', '', '', '', '', '', '',''];
+    gameStatus = "";
+    document.getElementById('game-status').innerHTML = "";
+    console.dir(grid.parentNodes)
+    for (let i = 0; i < grid.childNodes.length; i++) {
+      square = grid.childNodes[i]
+      square.innerHTML = "";
+    }
+    document.getElementById('new-game').disabled = true;
+
+
+  })
 
 })
